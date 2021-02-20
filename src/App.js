@@ -25,9 +25,18 @@ const App = ({ themoviedbApiKey }) => {
   }, []);
 
   return (
-    <div style={{ width: useTheme().breakpoints.values.lg, margin: "auto" }}>
+    <div
+      style={{
+        width: useTheme().breakpoints.values.lg,
+        margin: "auto",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       {Boolean(results.length) ? (
-        <MovieDeck results={results} />
+        <div>
+          <MovieDeck results={results} />
+        </div>
       ) : (
         <CircularProgress />
       )}

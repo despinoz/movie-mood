@@ -3,10 +3,13 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import themoviedbApiKey from "./config";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App themoviedbApiKey={themoviedbApiKey} />
+    <CssBaseline>
+      <App themoviedbApiKey={themoviedbApiKey} />
+    </CssBaseline>
   </React.StrictMode>,
   document.getElementById("root")
 );
