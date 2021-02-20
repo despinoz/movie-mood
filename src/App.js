@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { useTheme } from "@material-ui/core/styles";
+import MovieDeck from "./components/MovieDeck";
 
-function App() {
+const App = ({ themoviedbApiKey }) => {
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${themoviedbApiKey}`
+      )
+      .then(({ data }) => {
+        setResults(data.results);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ width: useTheme().breakpoints.values.lg, margin: "auto" }}>
+      {Boolean(results.length) ? (
+        <MovieDeck results={results} />
+      ) : (
+        <CircularProgress />
+      )}
     </div>
   );
-}
+};
 
 export default App;
