@@ -5,6 +5,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { useTheme } from "@material-ui/core/styles";
 import MovieDeck from "./components/MovieDeck";
 import SearchBar from "./components/SearchBar";
+import Popularity from "./components/Popularity";
 
 const App = ({ themoviedbApiKey }) => {
   const [results, setResults] = useState([]);
@@ -47,8 +48,6 @@ const App = ({ themoviedbApiKey }) => {
       });
   };
 
-  
-
   return (
     <>
       <SearchBar
@@ -57,22 +56,23 @@ const App = ({ themoviedbApiKey }) => {
         query={query}
         setQuery={setQuery}
       />
-    <div
-      style={{
-        width: useTheme().breakpoints.values.lg,
-        margin: "auto",
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      {Boolean(results.length) ? (
-        <div>
-          <MovieDeck results={results} />
-        </div>
-      ) : (
-        <CircularProgress />
-      )}
-    </div>
+      <Popularity />
+      <div
+        style={{
+          width: useTheme().breakpoints.values.lg,
+          margin: "auto",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        {Boolean(results.length) ? (
+          <div>
+            <MovieDeck results={results} />
+          </div>
+        ) : (
+          <CircularProgress />
+        )}
+      </div>
     </>
   );
 };
