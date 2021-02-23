@@ -89,11 +89,11 @@ const App = ({ themoviedbApiKey }) => {
           justifyContent: "center",
         }}
       >
-        <img src={banner} style={{ width: "80%" }} alt="" />
+        <img src={banner} style={{ width: "65%", minWidth: "1250px" }} alt="" />
         <SearchBar handleOnInputChange={handleOnInputChange} />
       </div>
       <Modal
-        open={Object.values(selectedMovie).length}
+        open={!!Object.values(selectedMovie).length}
         handleCloseModal={handleCloseModal}
         selectedMovie={selectedMovie}
       />
