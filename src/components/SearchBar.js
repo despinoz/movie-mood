@@ -10,7 +10,7 @@ const SearchBar = ({ handleOnInputChange }) => (
       width: "400px",
       height: "45px",
       borderRadius: "100px",
-      top: "15%",
+      top: "25%",
     }}
   >
     <TextField

@@ -1,3 +1,5 @@
+![alt text](https://github.com/despinoz/movie-mood/blob/master/src/banner.png)
+
 # Movie Mood
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
